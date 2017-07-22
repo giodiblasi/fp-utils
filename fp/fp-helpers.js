@@ -1,5 +1,5 @@
 let _ = require('ramda');
-class Container{
+ class Container{
     constructor(x){
         this.__value=x;
     }
@@ -9,15 +9,19 @@ class Container{
     }
 }
 
-class Functor extends Container{
+ class Functor extends Container{
     map(f){
         return this.of(f(this.__value));
+    }
+
+    static of(x){
+        return new Functor(x);
     }
 }
 
 
 
-class Maybe extends Container{
+ class Maybe extends Container{
     isNothing() {
         return (this.__value===null || this.__value===undefined);
     }
@@ -26,36 +30,55 @@ class Maybe extends Container{
         return this.isNothing ? Maybe.of(null) 
                               : Maybe.of(f(this.__value));
     }
+
+    static of(x){
+        return new Maybe(x);
+    }
+                            
 }
 
-class Monad extends Maybe{
+ class Monad extends Maybe{
     join(){
         return this.isNothing() ? Maybe.of(null) 
                                 : this.__value;
     }
+
+    static of(x){
+        return new Monad(x);
+    }
 }
 
-let join = (mma) => mma.join();
+ let join = (mma) => mma.join();
 
-let chain = f => m => m.map(f).join();
+ let chain = f => m => m.map(f).join();
 
-let maybe = (x) => (f) => (m) =>{
+ let maybe = (x) => (f) => (m) =>{
     return m.isNothing() ? x : f(m.__value);
 }
 
-class Left extends Container{
+ class Left extends Container{
     map(f){
         return this;
     }
+
+    static of(x){
+        return new Left(x);
+    }
+    
 }
 
-class Right extends Container{
+ class Right extends Container{
     map(f){
         return Right.of(f(this.__value));
     }
+
+     static of(x){
+        return new Right(x);
+    }
 }
 
-let either = f => g => e =>{
+ let  either = (f , g) => e =>{
+     
     switch(e.constructor){
         case Left:
             return f(e.__value);
@@ -64,7 +87,7 @@ let either = f => g => e =>{
     }
 }
 
-class IO{
+ class IO{
     constructor(f){
         this.unsafePerformIO = f;
     }
@@ -79,4 +102,23 @@ class IO{
         var _this=this;
         return new IO(()=>_this.unsafePerformIO().unsafePerformIO());
     }
+}
+
+log= message => x =>{
+    console.log(message, x);
+    return x;
+}
+
+module.exports = {
+    Container,
+    Functor,
+    Maybe,
+    Left,
+    Right,
+    IO,
+    either,
+    join,
+    chain,
+    Monad,
+    log
 }
