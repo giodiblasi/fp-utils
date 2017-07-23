@@ -16,3 +16,14 @@ let print=message => x=>{console.log(message); return x;}
 
 let classify = _.compose(fp.either(print("Poor"),print("Rich")),gt(5));
 classify(account);
+
+//composition
+console.log("Composition test");
+var u=fp.Functor.of(10);
+var f=x=>x+1;
+var g=x=>x*2;
+var u1=u.map(_.compose(f,g));
+var u2=u.map(g).map(f);
+console.log(u1);
+console.log(u2);
+

@@ -4,12 +4,13 @@
   "description": "Utilities for Functional Programming",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha ./tests/*.js",
     "start": "node index.js"
   },
   "author": "Giovanni Di Blasi",
   "license": "ISC",
   "dependencies": {
+    "mocha": "^3.4.2",
     "ramda": "^0.24.1"
   },
   "devDependencies": {
