@@ -21,7 +21,6 @@ class Right extends Container {
 }
 
 let either = (f, g) => e => {
-
     switch (e.constructor) {
         case Left:
             return f(e.__value);
@@ -30,7 +29,7 @@ let either = (f, g) => e => {
     }
 }
 
-module.exports={
+module.exports = {
     Left,
     Right,
     either
