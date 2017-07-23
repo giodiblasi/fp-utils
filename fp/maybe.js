@@ -6,7 +6,7 @@ class Maybe extends Container {
     }
 
     map(f) {
-        return this.isNothing ? Maybe.of(null)
+        return this.isNothing() ? Maybe.of(null)
             : Maybe.of(f(this.__value));
     }
 
