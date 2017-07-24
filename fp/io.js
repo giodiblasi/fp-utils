@@ -1,3 +1,4 @@
+let _ = require('ramda');
 class IO {
     constructor(f) {
         this.unsafePerformIO = f;

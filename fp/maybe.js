@@ -14,6 +14,9 @@ class Maybe extends Container {
         return new Maybe(x);
     }
 
+    join(){
+        return this.isNothing() ? Maybe.of(null) : this.__value;
+    }
 }
 
 let maybe = (x) => (f) => (m) => {

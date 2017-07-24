@@ -15,4 +15,14 @@ describe('Maybe tests', function () {
         var inc = x => x + 1;
         assert.equal(u.map(inc).__value, null);
     });
+
+    it('should get value using join', function () {
+        let u = m.Maybe.of(5);
+        assert.equal(u.join(), 5);
+    });
+
+    it('should get null Monad when using join with a null monad', function () {
+        let u = m.Maybe.of(undefined);
+        assert.equal(u.join().__value, null);
+    });
 });

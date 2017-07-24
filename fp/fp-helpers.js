@@ -4,12 +4,15 @@ let Functor = require('./functor');
 let mb=require('./maybe');
 let e=require('./either');
 let IO = require('./IO');
-let monad=require('./monad');
+
 
 log = message => x => {
     console.log(message, x);
     return x;
 }
+
+let join = (mma) => mma.join();
+let chain = f => m => m.map(f).join();
 
 module.exports = {
     Container,
@@ -20,8 +23,7 @@ module.exports = {
     Right:e.Right,
     IO,
     either:e.either,
-    join:monad.join,
-    chain:monad.chain,
-    Monad:monad.Monad,
+    join,
+    chain,
     log
 }
