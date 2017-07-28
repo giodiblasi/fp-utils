@@ -14,4 +14,10 @@ describe('Helper tests', function () {
         let inc = x => x+1;
         assert(h.chain(inc)(u),6);
     });
+
+    it('should get contained value using chain helper',function(){
+        let u=m.Maybe.of(5);
+        let inc = x => x+1;
+        assert(h.map(inc)(u).__value,6);
+    });
 });
