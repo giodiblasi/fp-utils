@@ -1,29 +1,23 @@
-let fp = require('./fp/fp-helpers');
 let _ = require('ramda');
+let Container=require('./fp/container');
+let Functor = require('./fp/functor');
+let mb=require('./fp/maybe');
+let e=require('./fp/either');
+let IO = require('./fp/IO');
+let helpers=require('./fp/fp-helpers')
 
-var test=_.compose(console.log,fp.join,fp.log("Start stack"));
-test(fp.Monad.of("Hello World"));
-
-let gt= thr => account => account.amount > thr ? fp.Right.of(account) 
-                                               : fp.Left.of(account)
-
-var account={
-    name: "jack",
-    amount: 1
+module.exports = {
+    Container,
+    Functor,
+    Maybe:mb.Maybe,
+    maybe:mb.maybe,
+    Left:e.Left,
+    Right:e.Right,
+    IO,
+    either:e.either,
+    join:helpers.join,
+    chain:helpers.chain,
+    log:helpers.chain
 }
 
-let print=message => x=>{console.log(message); return x;}
-
-let classify = _.compose(fp.either(print("Poor"),print("Rich")),gt(5));
-classify(account);
-
-//composition
-console.log("Composition test");
-var u=fp.Functor.of(10);
-var f=x=>x+1;
-var g=x=>x*2;
-var u1=u.map(_.compose(f,g));
-var u2=u.map(g).map(f);
-console.log(u1);
-console.log(u2);
 

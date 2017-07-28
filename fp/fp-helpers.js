@@ -14,16 +14,8 @@ log = message => x => {
 let join = (mma) => mma.join();
 let chain = f => m => m.map(f).join();
 
-module.exports = {
-    Container,
-    Functor,
-    Maybe:mb.Maybe,
-    maybe:mb.maybe,
-    Left:e.Left,
-    Right:e.Right,
-    IO,
-    either:e.either,
+module.exports={
+    log,
     join,
-    chain,
-    log
+    chain
 }
