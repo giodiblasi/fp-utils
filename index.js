@@ -17,7 +17,8 @@ module.exports = {
     either:e.either,
     join:helpers.join,
     chain:helpers.chain,
-    log:helpers.chain
+    log:helpers.log,
+    map:helpers.map
 }
 
 
