@@ -1,4 +1,5 @@
 let Container = require('./Container');
+let _ = require('ramda');
 class Left extends Container {
     map(f) {
         return this;
@@ -29,8 +30,16 @@ let either = (f, g) => e => {
     }
 }
 
+const eitherPromise = (left, right) => promise =>
+  _.reduce((p, fn) => p
+                    .then(value => fn(Right.of(value)))
+                    .catch(value => fn(Left.of(value))))
+            (promise, [either(left, right)]);
+
+
 module.exports = {
     Left,
     Right,
-    either
+    either,
+    eitherPromise
 }

@@ -19,4 +19,23 @@ describe('Either tests', function () {
         var testMethod=(_.compose(e.either(l,r),u=>u));
         assert.equal(testMethod(u), 7);
     });
+
+    it('Should execute left function on catch', function () {
+        const p = (x) => new Promise((resolve,reject) => {
+            reject(x);
+        });
+        var l = x => assert.equal(true,true);
+        var r = x => assert.fail();
+        var testMethod=(_.compose(e.eitherPromise(l,r),p));
+    });
+
+     it('Should execute right function on then', function () {
+        const p = (x) => new Promise((resolve,reject) => {
+            resolve(x);
+        });
+        var l = x => assert.fail()
+        var r = x => assert.equal(true,true);
+        var testMethod=(_.compose(e.eitherPromise(l,r),p));
+       
+    });
 });

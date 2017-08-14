@@ -15,6 +15,7 @@ module.exports = {
     Right:e.Right,
     IO,
     either:e.either,
+    eitherPromise: e.eitherPromise,
     join:helpers.join,
     chain:helpers.chain,
     log:helpers.log,
