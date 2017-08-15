@@ -9,3 +9,8 @@ Current version  implements:
 + Maybe
 + IO
 + Applicative
+
+test command :
+```javascript
+> npm test
+```
