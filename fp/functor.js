@@ -4,6 +4,10 @@ class Functor extends Container {
         return new this.constructor(f(this.__value));
     }
 
+    chain(f){
+        return  this.map(f).join();
+    }
+
     static of(x) {
         return new Functor(x);
     }

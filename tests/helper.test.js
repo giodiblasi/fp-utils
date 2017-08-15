@@ -15,7 +15,7 @@ describe('Helper tests', function () {
         assert(h.chain(inc)(u),6);
     });
 
-    it('should get contained value using chain helper',function(){
+    it('should get contained value using map helper',function(){
         let u=m.Maybe.of(5);
         let inc = x => x+1;
         assert(h.map(inc)(u).__value,6);

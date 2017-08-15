@@ -3,6 +3,10 @@ class Container {
         this.__value = x;
     }
 
+    join(){
+        return this.__value;
+    }
+    
     static of(x) {
         return new Container(x);
     }
