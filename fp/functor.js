@@ -1,7 +1,7 @@
 let Container = require('./container');
 class Functor extends Container {
     map(f) {
-        return Functor.of(f(this.__value));
+        return new this.constructor(f(this.__value));
     }
 
     static of(x) {

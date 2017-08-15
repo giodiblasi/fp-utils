@@ -13,7 +13,7 @@ log = message => x => {
 
 let join = (mma) => mma.join();
 let chain = f => m => m.map(f).join();
-let map= f=> m => m.map(f);
+let map= f=> m => m.map(f); 
 module.exports={
     log,
     join,

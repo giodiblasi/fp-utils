@@ -4,7 +4,8 @@ let Functor = require('./fp/functor');
 let mb=require('./fp/maybe');
 let e=require('./fp/either');
 let IO = require('./fp/IO');
-let helpers=require('./fp/fp-helpers')
+let helpers=require('./fp/fp-helpers');
+let Applicative = require('./fp/applicative');
 
 module.exports = {
     Container,
@@ -19,7 +20,7 @@ module.exports = {
     join:helpers.join,
     chain:helpers.chain,
     log:helpers.log,
-    map:helpers.map
+    map:helpers.map,
+    Applicative:Applicative.Applicative,
+    ap:Applicative.ap
 }
-
-
