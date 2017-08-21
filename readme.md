@@ -10,11 +10,7 @@ Current version  implements:
 + IO
 + Applicative
 
-test command :
-```javascript
-> npm test
-```
-
+Here some example (you can see more use cases in [tests](https://github.com/giodiblasi/fp-utils/tree/master/tests))
 #### Functor Example:
 ```javascript
 let u = Functor.of(5);
@@ -54,4 +50,9 @@ let res=monad.bind(wrappingFunction); //=> Monad.of(6)
 ```javascript
 let appInc = Applicative.of((x)=>++x);
 let res=appInc.ap(Functor.of(4)); // => Functor.of(5)
+```
+
+test command :
+```javascript
+> npm test
 ```
