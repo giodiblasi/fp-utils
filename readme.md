@@ -1,6 +1,6 @@
 ## Functional Progamming Util (Very Experimental) ##
 
-this repo contain class and helper to support functional programming
+This repo contain classes and helpers to support functional programming
 
 Current version  implements:
 + Functor
