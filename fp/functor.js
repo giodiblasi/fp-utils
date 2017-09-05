@@ -1,17 +1,15 @@
-let Container = require('./container');
+const containerOf = require('./container');
+const _ = require('ramda');
 
-class Functor extends Container {
-    map(f) {
-        return new this.constructor(f(this.__value));
-    }
 
-    chain(f){
-        return  this.map(f).join();
-    }
 
-    static of(x) {
-        return new Functor(x);
-    }
-}
+const  withFunctor = (container) => {
+    return Object.assign({},container,{
+        map : f => functorOf(f(container.__value)),
+        chain: f => functorOf(f(container.__value)).join()
+    });
+};
 
-module.exports=Functor;
+const functorOf = _.compose(withFunctor,containerOf);
+
+module.exports={functorOf,withFunctor};

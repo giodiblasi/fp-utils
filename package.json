@@ -4,7 +4,8 @@
   "description": "Utilities for Functional Programming",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha ./tests/*.js",
+    "testAll": "nyc mocha ./tests/*.js",
+    "test" : "nyc mocha",
     "start": "node index.js"
   },
   "author": "Giovanni Di Blasi",

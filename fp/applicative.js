@@ -1,15 +1,15 @@
-const Container = require('./container');
+const containerOf = require('./container');
+const _ = require('ramda');
 
-class Applicative extends Container{
-   static of(x) {
-        return new Applicative(x);
-    }
-
-    ap(functor){        
-       return functor.map(this.__value);
-    }
+const withApplicative = (container) => {
+    return Object.assign({}, container, {
+        ap : (functor) => {
+            return functor.map(this.__value); 
+        }
+    });
 }
+const applicativeOf = _.compose(withApplicative,containerOf);
 
-let ap = app =>  functor => app.ap(functor);
+const ap = app =>  functor => app.ap(functor);
 
-module.exports = {Applicative,ap};
+module.exports = {applicativeOf, withApplicative, ap};
