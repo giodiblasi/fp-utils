@@ -10,12 +10,12 @@
   "author": "Giovanni Di Blasi",
   "license": "ISC",
   "dependencies": {
-    "mocha": "^3.4.2",
-    "nyc": "^11.1.0",
+    "mocha": "^6.0.2",
+    "nyc": "^13.3.0",
     "ramda": "^0.24.1"
   },
   "devDependencies": {
-    "eslint": "^4.3.0",
+    "eslint": "^5.14.1",
     "eslint-config-google": "^0.9.1"
   }
 }
